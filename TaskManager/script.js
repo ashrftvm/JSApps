@@ -3,6 +3,7 @@ let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 // Function to save tasks to local storage
 function saveTasks() {
+    // debugger
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -48,9 +49,8 @@ function renderTasks() {
     delBtnContentEl.innerText = 'Delete';
     deleteButton.appendChild(delBtnContentEl)
     deleteButton.addEventListener('click', () => {
-      tasks.splice(index, 1);
-      saveTasks();
-      renderTasks();
+        console.log(index, 'hello')
+        deleteTask(index)
     });
 
     taskCard.appendChild(taskText);
@@ -79,6 +79,28 @@ function handleFormSubmit(event) {
     taskInput.value = '';
     renderTasks();
   }
+}
+
+// function to delete the selected task
+function deleteTask(index){
+    const taskManagerContainer = document.querySelector(".taskManager")
+    taskManagerContainer.classList.add("overlay")
+    const confirmEl = document.querySelector(".confirm")
+    confirmEl.style.display = "block"
+    const confirmedBtn = confirmEl.querySelector(".confirmed")
+    confirmedBtn.addEventListener("click", ()=>{
+        tasks.splice(index, 1);
+        console.log(index, tasks)
+        saveTasks();
+        renderTasks();
+        confirmEl.style.display= "none"
+        taskManagerContainer.classList.remove("overlay")
+    })
+    const cancelledBtn = confirmEl.querySelector(".cancel")
+    cancelledBtn.addEventListener("click", ()=>{
+        confirmEl.style.display= "none"
+        taskManagerContainer.classList.remove("overlay")
+    })
 }
 
 // Add event listener to the form submit event
