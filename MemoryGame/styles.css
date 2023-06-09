@@ -47,11 +47,6 @@ h1 {
     margin-top: 20px;
 }
 
-.msg,
-.gameTimer {
-    margin: 1rem 0;
-}
-
 #startBtn,
 #restartButton {
     margin-top: 20px;
@@ -66,4 +61,5 @@ h1 {
 .msg,
 .gameTimer {
     display: none;
+    margin: 1rem 0;
 }
