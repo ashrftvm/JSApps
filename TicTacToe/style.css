@@ -1,0 +1,61 @@
+.container {
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  h1 {
+    font-size: 48px;
+    color: #ff5555;
+    text-shadow: 2px 2px #333;
+  }
+  
+  .board {
+    display: grid;
+    grid-gap: 5px; /* Adjust the spacing between cells here */
+    margin: 20px auto;
+    max-width: 300px;
+    grid-template-columns: repeat(3, 1fr); /* Update the number of columns here */
+  }
+  
+  .cell {
+    width: 100px;
+    height: 100px;
+    background-color: #ff5555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .cell:hover {
+    background-color: #555;
+  }
+  
+  button {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  #message {
+    font-size: 28px;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .options {
+    margin-bottom: 20px;
+  }
+  
+  .options label {
+    margin-right: 10px;
+  }
+  
