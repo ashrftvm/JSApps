@@ -93,6 +93,7 @@ function makeAIMove() {
       makeObstructingMove();
     }
     aiTurn = false; // Enable player's movement after AI's turn
+    console.log(aiTurn)
   }
 }
 
