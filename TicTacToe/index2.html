@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Code Craft Studio - Projects</title>
+  <style>
+    body {
+  background-color: #222;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.dark-mode {
+  color: #fff;
+}
+
+.title {
+  color: #fff;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  margin-top: 30px;
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  background-color: #444;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cell::before,
+.cell::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.cell::before {
+  font-size: 40px;
+  color: #aeeeff;
+  text-shadow: 0 0 5px #aeeeff, 0 0 10px #aeeeff, 0 0 15px #aeeeff, 0 0 20px #aeeeff;
+  animation: neon-glow 1s ease-in-out infinite alternate;
+}
+
+.cell:hover::before,
+.cell:hover::after {
+  display: block;
+}
+
+@keyframes neon-glow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 5px #aeeeff, 0 0 10px #aeeeff, 0 0 15px #aeeeff, 0 0 20px #aeeeff, 0 0 25px #aeeeff, 0 0 30px #aeeeff, 0 0 35px #aeeeff;
+  }
+}
+
+.game-info {
+  margin-top: 20px;
+  color: #aeeeff;
+}
+
+.reset-btn {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #aeeeff;
+  color: #222;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reset-btn:hover {
+  background-color: #79c2d7;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container dark-mode">
+    <h1 class="title">Tic Tac Toe</h1>
+    <div class="game-board">
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell">X</div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell">O</div>
+      <div class="cell"></div>
+    </div>
+    <p class="game-info">Player's Turn: X</p>
+    <button class="reset-btn">Reset</button>
+  </div>
+</body>
+</html>
