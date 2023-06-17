@@ -1,0 +1,39 @@
+body {
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #fff;
+        }
+        
+        .game-area {
+            display: flex;
+            flex-wrap: wrap;
+            width: 300px;
+            height: 300px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .hole {
+            flex-basis: 33.33%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #8b572a;
+            position: relative;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><text x="0" y="18" font-size="24">🔨</text></svg>'), auto;
+        }
+        
+        .bear {
+            font-size: 2rem;
+          opacity:0;
+        }
+        
+        #score {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
