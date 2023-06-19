@@ -9,37 +9,20 @@
 <body>
     <h1>🐻 Whack-a-Mole Game 🐻</h1>
     <div class="game-area">
-        <div class="hole" id="hole1">
-            <div class="bear" onclick="whack(event)">&#x1F43B;</div>
-        </div>
-        <div class="hole" id="hole2">
-            <div class="bear" onclick="whack(event)">&#x1F43B;</div>
-        </div>
-        <div class="hole" id="hole3">
-            <div class="bear" onclick="whack(event)">&#x1F43B;</div>
-        </div>
-        <div class="hole" id="hole4">
-            <div class="bear" onclick="whack(event)">&#x1F43B;</div>
-        </div>
-        <div class="hole" id="hole5">
-            <div class="bear" onclick="whack(event)">&#x1F43B;</div>
-        </div>
-        <div class="hole" id="hole6">
-            <div class="bear" onclick="whack(event)">&#x1F43B;</div>
-        </div>
-        <div class="hole" id="hole7">
-            <div class="bear" onclick="whack(event)">&#x1F43B;</div>
-        </div>
-        <div class="hole" id="hole8">
-            <div class="bear" onclick="whack(event)">&#x1F43B;</div>
-        </div>
-        <div class="hole" id="hole9">
-            <div class="bear" onclick="whack(event)">&#x1F43B;</div>
-        </div>
+        <div class="hole" onclick="whack(event)" id="hole1"></div>
+        <div class="hole" onclick="whack(event)" id="hole2"></div>
+        <div class="hole" onclick="whack(event)" id="hole3"></div>
+        <div class="hole" onclick="whack(event)" id="hole4"></div>
+        <div class="hole" onclick="whack(event)" id="hole5"></div>
+        <div class="hole" onclick="whack(event)" id="hole6"></div>
+        <div class="hole" onclick="whack(event)" id="hole7"></div>
+        <div class="hole" onclick="whack(event)" id="hole8"></div>
+        <div class="hole" onclick="whack(event)" id="hole9"></div>
     </div>
     <div id="score">Score: 0</div>
+    <div id="countdown"></div>
     <div id="game-over">Game Over!</div>
-<button onclick="startGame()">Start Game</button>
-      <script src="script.js"></script>
+    <button class="startBtn glow-on-hover" onclick="startGame()">Start Game</button>
+    <script src="script.js"></script>
 </body>
 </html>
