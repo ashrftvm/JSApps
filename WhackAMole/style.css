@@ -1,39 +1,122 @@
 body {
-            background-color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            color: #fff;
-        }
-        
-        .game-area {
-            display: flex;
-            flex-wrap: wrap;
-            width: 300px;
-            height: 300px;
-            border: 2px solid #fff;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .hole {
-            flex-basis: 33.33%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #8b572a;
-            position: relative;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><text x="0" y="18" font-size="24">🔨</text></svg>'), auto;
-        }
-        
-        .bear {
-            font-size: 2rem;
-          opacity:0;
-        }
-        
-        #score {
-            font-size: 2rem;
-            margin-top: 20px;
-        }
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.game-area {
+    display: grid;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    gap: 2px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.hole {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2a538b;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><text x="0" y="18" font-size="24">🔨</text></svg>'), auto;
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+
+.bearEmoji {
+  position: relative;
+}
+
+.bearEmoji::before {
+  content: "\1F43B"; /* Unicode value for the bear emoji */
+  font-size: 2rem; /* Adjust the size as needed */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+#score {
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+#game-over{
+  display: none;
+  margin-top: 10px;
+}
+
+.startBtn{
+  margin-top: 15px;
+}
+
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}

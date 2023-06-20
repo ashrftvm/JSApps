@@ -1,95 +1,94 @@
+const gameAreaEl = document.getElementById("game-area");
+const scoreEl = document.getElementById("score");
+const countdownEl = document.getElementById("countdown");
+const gameOverEl = document.getElementById("game-over");
+const startBtnEl = document.querySelector(".startBtn");
+const holes = [...document.getElementsByClassName('hole')];
 
-const holes = document.querySelectorAll('.hole');
-const bears = document.querySelectorAll('.bear');
+let gameDuration = 20 //seconds
 let score = 0;
+let miss = 0;
+const maximumMissThreshold = 3;
 let gameRunning = false;
-let misses = 0;
-let peepingBear = null;
+let countdownInterval = null;
+let missTimerInterval = null;
 
-// Function to start the game
+// function initialize the game
 function startGame() {
-    score = 0;
-    misses = 0;
+    initializeGameTimer();
     gameRunning = true;
-    updateScore();
-    hideGameOver();
-    gameLoop();
-    setTimeout(() => {
-        gameRunning = false;
-        showGameOver();
-    }, 10000); // Game duration: 10 seconds
+    startBtnEl.style.display = "none";
+    gameOverEl.style.display = "none";
+    peekBearInterval = setInterval(peekBear, getPeekInterval())
 }
 
-// Function to randomly select a hole
-function randomHole() {
-    const index = Math.floor(Math.random() * holes.length);
-    return holes[index];
+// function to initialize the game timer
+function initializeGameTimer() {
+    countdownInterval = setInterval(() => {
+        countdownEl.style.display = "block";
+        countdownEl.textContent = `Your game will end in ${gameDuration} seconds or after three miss.`;
+        gameDuration--;
+        if(gameDuration == 0){
+            endGame();
+            return;
+        }
+    }, 1000);
 }
 
-// Function to make a bear appear
-function peep() {
-    if (!gameRunning) return;
-    let speed;
-    
-    if (score < 10) {
-        speed = Math.random() * 1000 + 500; // Normal level speed: Random time between 0.5 and 1.5 seconds
-    } else if (score < 20) {
-        speed = Math.random() * 800 + 300; // Medium level speed: Random time between 0.3 and 1.1 seconds
+// function to get peek interval game logic
+function getPeekInterval() {
+    if (score >= 0 && score <= 10) {
+        return 2000;
+    } else if (score >= 11 && score <= 20) {
+        return 1500;
     } else {
-        speed = Math.random() * 600 + 200; // Hard level speed: Random time between 0.2 and 0.8 seconds
+        return 1100;
     }
-    
-    const hole = randomHole();
-    const bear = hole.querySelector('.bear');
-    bear.style.opacity = '1';
-    peepingBear = bear;
-    
-    setTimeout(() => {
-        if (gameRunning && peepingBear === bear) {
-            bear.style.opacity = '0';
-            if (++misses === 3) {
-                gameRunning = false;
-                showGameOver();
-            } else {
-                peepingBear = null;
-                gameLoop();
-            }
+}
+
+// function for showing bear at certain intervals
+function peekBear() {
+    if (gameRunning) {
+        if(miss === maximumMissThreshold){
+            endGame();
+            return;
         }
-    }, 1000); // Time before the bear goes down: 1 second
+        const randomIndex = Math.floor(Math.random() * holes.length);
+        const hole = holes[randomIndex];
+        hole.classList.add("bearEmoji")
+        setTimeout(() => {
+            hole.classList.remove("bearEmoji");
+        }, 800);
+        missTimerInterval = setTimeout(() => {
+            miss++;
+        }, 800)
+    }
 }
 
-// Function to start the game loop
-function gameLoop() {
-    const delay = Math.random() * 2000 + 500; // Delay between each bear appearance: Random time between 0.5 and 2.5 seconds
-    setTimeout(() => {
-        if (gameRunning) {
-            peep();
+// function to clear the game variables and end
+function endGame(){
+    clearInterval(countdownInterval);
+    clearInterval(peekBearInterval);
+    countdownEl.style.display = "none";
+    countdownEl.textContent = `Your game will end in ${gameDuration} seconds or after three miss.`;
+    gameOverEl.style.display = "block";
+    gameOverEl.textContent = `Game Over! Score: ${score}.`
+    gameDuration = 20;
+    score = 0;
+    miss = 0;
+    startBtnEl.style.display = "block";
+}
+
+// function for whack event
+function whack(event){
+    if(gameRunning){
+        clearInterval(missTimerInterval);
+        const holeEl = event.target;
+        if(holeEl.classList.contains("bearEmoji")){
+            score++;
+            scoreEl.textContent = `Score: ${score}`
+        }else{
+            miss++;
         }
-    }, delay);
-}
-
-// Function to whack a bear
-function whack(event) {
-    if (!event.target.classList.contains('bear')) return;
-    const bear = event.target;
-    bear.style.opacity = '0';
-    score++;
-    updateScore();
-    misses = 0;
-    peepingBear = null;
-}
-
-// Function to update the score display
-function updateScore() {
-    document.getElementById('score').textContent = 'Score: ' + score;
-}
-
-// Function to show the game over message
-function showGameOver() {
-    document.getElementById('game-over').style.display = 'block';
-}
-
-// Function to hide the game over message
-function hideGameOver() {
-    document.getElementById('game-over').style.display = 'none';
+    }
 }
