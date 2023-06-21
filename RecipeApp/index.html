@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class=" text-white">
+    <div class="search-bar-container search-bar-center container mx-auto py-8">
+        <h1 class="text-3xl font-bold text-center mb-6">Recipe Search</h1>
+
+        <form id="searchForm" class="flex justify-center mb-4">
+            <input type="text" id="searchInput" placeholder="Search recipes"
+                class="border border-gray-400 rounded-l px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-700 text-white">
+            <button type="submit" id="searchButton"
+                class="bg-blue-500 hover:bg-blue-600 text-white rounded-r px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">Search</button>
+        </form>
+        <div id="loader" class="loader hidden">
+            <span class="loader__text">Loading...</span>
+        </div>
+        <div id="notification" class="hidden">
+            No search results found.
+        </div>
+    </div>
+
+    <div class="recipesWrapper mx-5">
+        <div id="recipesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+        <div id="recipeDetailsModal"
+            class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden">
+            <div class="bg-gray-800 rounded-lg p-8 my-1 max-w-md recipe-modal overflow-y-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 id="recipeTitle" class="text-2xl font-bold"></h2>
+                    <button id="closeButton"
+                        class="bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">Close</button>
+                </div>
+                <img id="recipeImage" class="w-full h-48 object-cover mb-6 rounded" alt="">
+                <h3 class="text-xl font-bold mb-4">Ingredients</h3>
+                <ul id="recipeIngredients" class="list-disc pl-6 mb-6"></ul>
+                <h3 class="text-xl font-bold mb-4">Instructions</h3>
+                <p id="recipeInstructions" class="recipe-instructions"></p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
