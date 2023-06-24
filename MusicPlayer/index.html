@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Player</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Music Player</h2>
+    <div class="music-player">
+      <img src="https://th.bing.com/th/id/R.db2ff5146799dfd14357b709098d781a?rik=7ILoADEyG68i0g&pid=ImgRaw&r=0" alt="Album Cover">
+      <p>Song Title</p>
+      <p>Artist</p>
+    </div>
+    <div class="controls">
+      <button id="backBtn"><i data-feather="rewind"></i></button>
+      <button id="playPauseButton"><i data-feather="play"></i></button>
+      <button id="forwardBtn"><i data-feather="fast-forward"></i></button>
+    </div>
+    <div class="time">
+      <span class="elapsed-time">0:00</span>
+      <span class="remaining-duration">-0:00</span>
+    </div>
+    <input type="range" name="time-range" id="time-range" min="0" value="0" step="1">
+    <div class="repeat-shuffle">
+      <button id="repeatBtn" class="active"><i data-feather="repeat"></i></button>
+      <button id="shuffleBtn"><i data-feather="shuffle"></i></button>
+    </div>
+  </div>
+<script>
+    feather.replace()
+</script>
+  <script src="script.js"></script>
+</body>
+</html>
