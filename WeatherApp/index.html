@@ -12,13 +12,16 @@
     
     <section class="wrapper">
         <div class="container">
-            <div class="weather-side">
+            <div class="weather-side day">
                 <div class="weather-gradient"></div>
                 <div class="date-container">
-                    <h2 class="date-dayname">Tuesday</h2><span class="date-day">15 Jan 2019</span><i
-                        class="location-icon" data-feather="map-pin"></i><span class="location">Paris, FR</span>
+                    <h2 class="date-dayname">Thursday</h2>
+                    <span class="date-day">15 Jun 2023</span>
+                    <span class="location-icon"></span>
+                    <span class="location">Paris, France</span>
                 </div>
-                <div class="weather-container"><i class="weather-icon" data-feather="sun"></i>
+                <div class="weather-container">
+                    <img class="weather-icon" src="//cdn.weatherapi.com/weather/64x64/day/116.png">
                     <h1 class="weather-temp">29°C</h1>
                     <h3 class="weather-desc">Sunny</h3>
                 </div>
@@ -40,35 +43,32 @@
                 </div>
                 <div class="week-container">
                     <ul class="week-list">
-                        <li class="active">
-                            <div class="weatherIcon">
-                                <div class="snow">
-                                    <div class="inner"></div>
-                                </div>
-                            </div>
-                            <span
-                                class="day-name">Tue</span><span class="day-temp">29°C</span></li>
-                        <li><i class="day-icon" data-feather="cloud"></i><span class="day-name">Wed</span><span
+                        <li>
+                            <img class="day-icon" src="//cdn.weatherapi.com/weather/64x64/night/116.png" alt="">
+                            <span class="day-name">Tue</span><span class="day-temp">29°C</span></li>
+                        <li><img class="day-icon" src="//cdn.weatherapi.com/weather/64x64/night/119.png" alt="">
+                            <span class="day-name">Wed</span><span
                                 class="day-temp">21°C</span></li>
-                        <li><i class="day-icon" data-feather="cloud-snow"></i><span class="day-name">Thu</span><span
+                        <li><img class="day-icon" src="//cdn.weatherapi.com/weather/64x64/night/176.png" alt="">
+                            <span class="day-name">Thu</span><span
                                 class="day-temp">08°C</span></li>
-                        <li><i class="day-icon" data-feather="cloud-rain"></i><span class="day-name">Fry</span><span
+                        <li><img class="day-icon" src="//cdn.weatherapi.com/weather/64x64/night/248.png" alt="">
+                            <span class="day-name">Fry</span><span
                                 class="day-temp">19°C</span></li>
                         <div class="clear"></div>
                     </ul>
                 </div>
                 <div class="location-container">
-                    <input id="search-input" type="text" placeholder="Enter Location">
-                    <button class="location-button"> <i data-feather="map-pin"></i><span>Change location</span></button>
+                    <form class="location-form">
+                        <input id="search-input" type="text" placeholder="Enter Location">
+                        <button class="location-button"><span>Change location</span></button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-        feather.replace();
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
