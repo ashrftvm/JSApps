@@ -1,4 +1,4 @@
-const apiKey = '1ceec3a3751e4085a13193145232206';
+const apiKey = APIKEY;
 const dateObj = new Date();
 
 const getDayName = (dayType, dateVal = dateObj) => dateVal.toLocaleDateString('en-US', {weekday: dayType})
