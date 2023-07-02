@@ -14,6 +14,8 @@ let currentTime = 0; //seconds
 outline.style.strokeDashoffset = outlineLength;
 outline.style.strokeDasharray = outlineLength;
 
+playPauseBtn.addEventListener('click', togglePlay)
+
 function togglePlay(){
     if(audio.src){
         if(audio.paused){
@@ -89,4 +91,3 @@ timeEls.forEach(timeEl => {
     })
 })
 
-playPauseBtn.addEventListener('click', togglePlay)
