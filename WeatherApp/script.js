@@ -48,7 +48,7 @@ function updateForecastData(forecastData){
     if(currentDate.toDateString() !== dateObj.toDateString()){
       const liEl = document.createElement("li");
       liEl.innerHTML = `
-        <img class="day-icon" src="${dayObj.day.condition.icon}" alt="${dayObj.day.condition.text}">
+        <img class="day-icon" src="https:${dayObj.day.condition.icon}" alt="${dayObj.day.condition.text}">
         <span class="day-name">${getDayName('short', currentDate)}</span><span class="day-temp">${dayObj.day.maxtemp_c}°C</span>
       `
       weekContainer.appendChild(liEl)
@@ -72,7 +72,7 @@ navigator.geolocation.getCurrentPosition(position => {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
   const location = `${latitude},${longitude}`;
-  // fetchWeatherData(location);
+  fetchWeatherData(location);
 }, error => {
   console.log('Error getting location:', error);
 });
